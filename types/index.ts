@@ -1,7 +1,7 @@
 import { z } from "zod"
 export const SignUpSchema = z
   .object({
-    email: z.string().email(),
+    username: z.string().min(2).max(50),
     password: z
       .string()
       .min(8, { message: "Password must be at least 8 characters long" }),
@@ -15,14 +15,8 @@ export const SignUpSchema = z
   })
 
 export const SignInSchema = z.object({
-  email: z.string().email(),
+  username: z.string().min(2).max(50),
   password: z
     .string()
     .min(8, { message: "Password must be at least 8 characters long" }),
-})
-
-export const EmailVerificationSchema = z.object({
-  userId: z.string(),
-  email: z.string().email(),
-  code: z.string(),
 })
