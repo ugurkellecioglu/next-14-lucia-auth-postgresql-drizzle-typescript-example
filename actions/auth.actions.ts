@@ -8,10 +8,12 @@ import { lucia, validateRequest } from "@/lib/lucia"
 import { cookies } from "next/headers"
 import { eq } from "drizzle-orm"
 
+import bcrypt from "bcrypt"
+
 export const signUp = async (values: z.infer<typeof SignUpSchema>) => {
   console.log(values)
 
-  const hashedPassword = await new Argon2id().hash(values.password)
+  const hashedPassword = await bcrypt.hash(values.password, 10)
   const userId = generateId(15)
 
   try {
@@ -77,9 +79,9 @@ export const signIn = async (values: z.infer<typeof SignInSchema>) => {
     }
   }
 
-  const isValidPassword = await new Argon2id().verify(
-    existingUser.hashedPassword,
-    values.password
+  const isValidPassword = await bcrypt.compare(
+    values.password,
+    existingUser.hashedPassword
   )
 
   if (!isValidPassword) {
