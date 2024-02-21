@@ -25,7 +25,7 @@ export function SignUpForm() {
   const form = useForm<z.infer<typeof SignUpSchema>>({
     resolver: zodResolver(SignUpSchema),
     defaultValues: {
-      email: "",
+      username: "",
       password: "",
       confirmPassword: "",
     },
@@ -52,10 +52,10 @@ export function SignUpForm() {
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
         <FormField
           control={form.control}
-          name="email"
+          name="username"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>Username</FormLabel>
               <FormControl>
                 <Input placeholder="shadcn" {...field} />
               </FormControl>
