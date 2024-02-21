@@ -8,6 +8,20 @@
       "when": 1708517043074,
       "tag": "0000_conscious_harry_osborn",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1708517226153,
+      "tag": "0001_bouncy_manta",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1708517236097,
+      "tag": "0002_pale_winter_soldier",
+      "breakpoints": true
     }
   ]
 }
