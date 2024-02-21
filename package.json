@@ -10,6 +10,7 @@
     "generate": "drizzle-kit generate:pg"
   },
   "dependencies": {
+    "@lucia-auth/adapter-drizzle": "^1.0.2",
     "drizzle-orm": "^0.29.3",
     "next": "14.1.0",
     "pg": "^8.11.3",
