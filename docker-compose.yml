@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  web:
+    build: . # Path to your Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    volumes:
+      - .:/app # Mount your project directory
+      - /app/node_modules # Preserve the node_modules cache
+  db:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: db
