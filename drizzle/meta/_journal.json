@@ -43,6 +43,27 @@
       "when": 1708612595689,
       "tag": "0005_tiny_nighthawk",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1709314200545,
+      "tag": "0006_daffy_scorpion",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "5",
+      "when": 1709315347539,
+      "tag": "0007_happy_spyke",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "5",
+      "when": 1709315378660,
+      "tag": "0008_slimy_scrambler",
+      "breakpoints": true
     }
   ]
 }

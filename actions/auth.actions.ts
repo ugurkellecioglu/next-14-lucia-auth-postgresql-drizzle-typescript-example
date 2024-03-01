@@ -10,6 +10,8 @@ import { eq } from "drizzle-orm"
 import * as argon2 from "argon2"
 import jwt from "jsonwebtoken"
 import { sendEmail } from "@/lib/email"
+import { generateCodeVerifier, generateState } from "arctic"
+import { google } from "@/lib/lucia/oauth"
 
 export const resendVerificationEmail = async (email: string) => {
   try {
@@ -240,3 +242,37 @@ export const signOut = async () => {
     }
   }
 }
+
+export const createGoogleAuthorizationURL = async () => {
+  try {
+    const state = generateState()
+    const codeVerifier = generateCodeVerifier()
+
+    cookies().set("codeVerifier", codeVerifier, {
+      httpOnly: true,
+    })
+
+    cookies().set("state", state, {
+      httpOnly: true,
+    })
+
+    const authorizationURL = await google.createAuthorizationURL(
+      state,
+      codeVerifier,
+      {
+        scopes: ["email", "profile"],
+      }
+    )
+
+    return {
+      success: true,
+      data: authorizationURL,
+    }
+  } catch (error: any) {
+    return {
+      error: error?.message,
+    }
+  }
+}
+
+// const tokens = await github.validateAuthorizationCode(code)

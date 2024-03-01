@@ -15,7 +15,11 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { SignUpSchema } from "../types"
-import { resendVerificationEmail, signUp } from "../actions/auth.actions"
+import {
+  createGoogleAuthorizationURL,
+  resendVerificationEmail,
+  signUp,
+} from "../actions/auth.actions"
 import { toast } from "@/components/ui/use-toast"
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
@@ -82,8 +86,35 @@ export function SignUpForm() {
     }
   }
 
+  const onGoogleSignInClicked = async () => {
+    console.debug("Google sign in clicked")
+    const res = await createGoogleAuthorizationURL()
+    if (res.error) {
+      toast({
+        variant: "destructive",
+        description: res.error,
+      })
+    } else if (res.success) {
+      window.location.href = res.data.toString()
+    }
+  }
   return (
     <>
+      <div className="w-full flex item-center justify-center">
+        <Button
+          onClick={onGoogleSignInClicked}
+          variant={"outline"}
+          className="w-full"
+        >
+          Sign up with Google
+        </Button>
+      </div>
+
+      <div className="w-full flex items-center justify-center gap-2">
+        <span className="border-b border-gray-300 w-full"></span>
+        <span className="flex-none">Or sign up with your email</span>
+        <span className="border-b border-gray-300 w-full"></span>
+      </div>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
           <FormField
