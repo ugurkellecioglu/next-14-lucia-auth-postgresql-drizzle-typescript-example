@@ -5,7 +5,12 @@ https://www.youtube.com/watch?v=JIIy7VkiTqU
 
 ## Youtube tutorial - email, password with email verification
 
+- Checkout to email branch to see this implementation.
+
 https://www.youtube.com/watch?v=2sHsP_8YLHA&t=1s
+
+
+
 
 - Next 14
 - Lucia Auth Package
