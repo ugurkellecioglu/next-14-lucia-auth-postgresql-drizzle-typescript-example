@@ -1,0 +1,1 @@
+ALTER TABLE "oauth_account" ALTER COLUMN "expires_at" DROP NOT NULL;

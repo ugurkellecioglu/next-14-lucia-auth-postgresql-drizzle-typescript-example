@@ -64,6 +64,20 @@
       "when": 1709315378660,
       "tag": "0008_slimy_scrambler",
       "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "5",
+      "when": 1709557936676,
+      "tag": "0009_complete_blacklash",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "5",
+      "when": 1709558108983,
+      "tag": "0010_curvy_princess_powerful",
+      "breakpoints": true
     }
   ]
 }
