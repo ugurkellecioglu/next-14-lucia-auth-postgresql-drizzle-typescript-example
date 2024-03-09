@@ -16,6 +16,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { SignInSchema } from "../types"
 import {
+  createGithubAuthorizationURL,
   createGoogleAuthorizationURL,
   resendVerificationEmail,
   signIn,
@@ -102,9 +103,30 @@ export function SignInForm() {
       window.location.href = res.data.toString()
     }
   }
+  const onGithubSignInClicked = async () => {
+    console.debug("github sign in clicked")
+    const res = await createGithubAuthorizationURL()
+    if (res.error) {
+      toast({
+        variant: "destructive",
+        description: res.error,
+      })
+    } else if (res.success) {
+      window.location.href = res.data.toString()
+    }
+  }
 
   return (
     <Fragment>
+      <div className="w-full flex item-center justify-center">
+        <Button
+          onClick={onGithubSignInClicked}
+          variant={"outline"}
+          className="w-full"
+        >
+          Sign in with Github
+        </Button>
+      </div>
       <div className="w-full flex item-center justify-center">
         <Button
           onClick={onGoogleSignInClicked}
