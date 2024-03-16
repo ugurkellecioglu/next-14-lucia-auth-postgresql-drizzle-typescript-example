@@ -1,0 +1,1 @@
+ALTER TABLE "otp" ADD COLUMN "sent_at" timestamp with time zone NOT NULL;

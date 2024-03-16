@@ -15,8 +15,5 @@ export const SignUpSchema = z
   })
 
 export const SignInSchema = z.object({
-  username: z.string().min(2).max(50),
-  password: z
-    .string()
-    .min(8, { message: "Password must be at least 8 characters long" }),
+  phoneNumber: z.string().min(10).max(15),
 })

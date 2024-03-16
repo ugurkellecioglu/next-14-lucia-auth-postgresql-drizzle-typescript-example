@@ -16,10 +16,12 @@
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-toast": "^1.1.5",
     "argon2": "^0.31.2",
+    "aws-sdk": "^2.1574.0",
     "bcrypt": "^5.1.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "drizzle-orm": "^0.29.3",
+    "input-otp": "^1.0.1",
     "lucia": "^3.0.1",
     "lucide-react": "^0.335.0",
     "next": "14.1.0",
@@ -28,8 +30,10 @@
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.50.1",
+    "react-phone-number-input": "^3.3.9",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",
+    "usehooks-ts": "^3.0.1",
     "zod": "^3.22.4"
   },
   "devDependencies": {
