@@ -1,16 +1,10 @@
-# Username and password authentication template for Next 14
+# Role based protected route implementation
 
-## Youtube tutorial - username, password authentication
-https://www.youtube.com/watch?v=JIIy7VkiTqU
+## Youtube tutorial
 
-## Youtube tutorial - email, password with email verification
+https://youtu.be/8A6wTGEyLXE
 
-- Checkout to email branch to see this implementation.
-
-https://www.youtube.com/watch?v=2sHsP_8YLHA&t=1s
-
-
-
+In this tutorial we have created an admin page (admin>page.tsx), and redirect non-admin users to homepage when they try to access admin page. Pretty easy.
 
 - Next 14
 - Lucia Auth Package
