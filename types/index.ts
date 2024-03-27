@@ -20,3 +20,19 @@ export const SignInSchema = z.object({
     .string()
     .min(8, { message: "Password must be at least 8 characters long" }),
 })
+
+export const ResetPasswordSchema = z
+  .object({
+    password: z.string().min(8),
+    confirmPassword: z.string().min(8),
+    newPassword: z.string().min(8),
+    logoutFromOtherDevices: z.boolean(),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords do not match",
+    path: ["confirmPassword"],
+  })
+  .refine((data) => data.newPassword !== data.password, {
+    message: "New password must be different from the current password",
+    path: ["newPassword"],
+  })
