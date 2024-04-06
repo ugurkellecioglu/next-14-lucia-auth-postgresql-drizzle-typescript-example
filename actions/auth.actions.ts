@@ -11,7 +11,7 @@ import * as argon2 from "argon2"
 import jwt from "jsonwebtoken"
 import { sendEmail } from "@/lib/email"
 import { generateCodeVerifier, generateState } from "arctic"
-import { github, google } from "@/lib/lucia/oauth"
+import { facebook, github, google } from "@/lib/lucia/oauth"
 
 export const resendVerificationEmail = async (email: string) => {
   try {
@@ -285,6 +285,25 @@ export const createGithubAuthorizationURL = async () => {
 
     const authorizationURL = await github.createAuthorizationURL(state, {
       scopes: ["user:email"],
+    })
+
+    return {
+      success: true,
+      data: authorizationURL,
+    }
+  } catch (error: any) {
+    return {
+      error: error?.message,
+    }
+  }
+}
+
+export const createFacebookAuthorizationURL = async () => {
+  try {
+    const state = generateState()
+
+    const authorizationURL = await facebook.createAuthorizationURL(state, {
+      scopes: ["email", "public_profile"],
     })
 
     return {

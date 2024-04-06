@@ -16,6 +16,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { SignInSchema } from "../types"
 import {
+  createFacebookAuthorizationURL,
   createGithubAuthorizationURL,
   createGoogleAuthorizationURL,
   resendVerificationEmail,
@@ -103,6 +104,20 @@ export function SignInForm() {
       window.location.href = res.data.toString()
     }
   }
+
+  const onFacebookSignInClicked = async () => {
+    console.debug("Facebook sign in clicked")
+    const res = await createFacebookAuthorizationURL()
+    if (res.error) {
+      toast({
+        variant: "destructive",
+        description: res.error,
+      })
+    } else if (res.success) {
+      window.location.href = res.data.toString()
+    }
+  }
+
   const onGithubSignInClicked = async () => {
     console.debug("github sign in clicked")
     const res = await createGithubAuthorizationURL()
@@ -134,6 +149,15 @@ export function SignInForm() {
           className="w-full"
         >
           Sign in with Google
+        </Button>
+      </div>
+      <div className="w-full flex item-center justify-center">
+        <Button
+          onClick={onFacebookSignInClicked}
+          variant={"outline"}
+          className="w-full"
+        >
+          Sign in with Facebook
         </Button>
       </div>
 

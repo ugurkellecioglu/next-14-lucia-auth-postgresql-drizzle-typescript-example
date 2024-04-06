@@ -1,4 +1,4 @@
-import { GitHub, Google } from "arctic"
+import { Facebook, GitHub, Google } from "arctic"
 
 export const google = new Google(
   process.env.GOOGLE_CLIENT_ID!,
@@ -12,4 +12,10 @@ export const github = new GitHub(
   {
     redirectURI: process.env.NEXT_PUBLIC_BASE_URL + "/api/oauth/github",
   }
+)
+
+export const facebook = new Facebook(
+  process.env.FACEBOOK_CLIENT_ID!,
+  process.env.FACEBOOK_CLIENT_SECRET!,
+  process.env.NEXT_PUBLIC_BASE_URL + "/api/oauth/facebook"
 )
