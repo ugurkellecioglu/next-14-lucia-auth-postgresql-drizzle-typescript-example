@@ -15,15 +15,12 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { SignInSchema } from "../types"
-import {
-  resendVerificationEmail,
-  signIn,
-  signUp,
-} from "../actions/auth.actions"
+import { resendVerificationEmail, signUp } from "../actions/auth.actions"
 import { toast } from "@/components/ui/use-toast"
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 import { useCountdown } from "usehooks-ts"
+import { signIn } from "@/actions/magic-link.actions"
 
 export function SignInForm() {
   const [count, { startCountdown, stopCountdown, resetCountdown }] =
@@ -48,25 +45,21 @@ export function SignInForm() {
     resolver: zodResolver(SignInSchema),
     defaultValues: {
       email: "",
-      password: "",
     },
   })
 
   async function onSubmit(values: z.infer<typeof SignInSchema>) {
     const res = await signIn(values)
-    if (res.error) {
+
+    if (!res.success) {
       toast({
         variant: "destructive",
-        description: res.error,
+        description: res.message,
       })
-
-      if (res?.key === "email_not_verified") {
-        setShowResendVerificationEmail(true)
-      }
     } else if (res.success) {
       toast({
         variant: "default",
-        description: "Signed in successfully",
+        description: res.message,
       })
 
       router.push("/")
@@ -105,19 +98,6 @@ export function SignInForm() {
             </FormItem>
           )}
         />{" "}
-        <FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Password</FormLabel>
-              <FormControl>
-                <Input placeholder="****" type="password" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
         <Button type="submit">Submit</Button>
       </form>
       {showResendVerificationEmail && (
