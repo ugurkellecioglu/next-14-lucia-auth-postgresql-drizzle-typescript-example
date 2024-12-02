@@ -1,3 +1,6 @@
+# PLEASE DO NOT USE LUCIA FOR YOUR AUTH AS IT'S GOING TO BE DEPRECATED.
+# THIS REPOSITORY IS STALE.
+
 # Username and password authentication template for Next 14
 
 ## Youtube tutorial - username, password authentication
